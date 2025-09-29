@@ -1,5 +1,5 @@
 # blueberry-dictionary
-A test IDL dictionary for the new Blueberry protocol
+A prototype IDL dictionary for the new Blueberry protocol
 
 <img src="https://github.com/bluerobotics/blueberry-schema-parser/blob/main/src/com/bluerobotics/blueberry/schema/parser/resources/Project%20Blueberry%20Logo.png" width="75" align="left" style="vertical-align:top">
 
