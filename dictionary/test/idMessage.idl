@@ -25,6 +25,9 @@ THE SOFTWARE.
 /*
  A message to convey the unique ID of this devices
  */
+@topic("blueberry/devices/{device_type}/{nid}/id")
+@revision(1)
+@namespace(0x42)
 message IdMessage {
 	uint32 id;
 }

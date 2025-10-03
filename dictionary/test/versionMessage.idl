@@ -42,7 +42,9 @@ enum McuType : uint8 {
 /*
  A message to convey hardware and firmware versions in addition to hardware type
  */
- @topic("blueberry/")
+@topic("blueberry/devices/{device_type}/{nid}/version")
+@revision(1)
+@namespace(0x42)
 message VersionMessage {
 	uint32 firmwareVersion;
 	uin8 hardwareRev;
