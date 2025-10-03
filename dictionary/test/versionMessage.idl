@@ -1,0 +1,51 @@
+/*
+Copyright (c) 2025  Blue Robotics
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+//an enum to convey PCB type
+ enum HwType : uint16 {
+	UNDEFINED   = 0xffff;
+	SFDQ      	= 0x0000;
+	BLUE_SERVO	= 0x0001;
+	LUMEN       	= 0x0002;
+	NUCLEO     	= 0x0003; //the ST family of development PCBs
+	BLUE_ESC	= 0x0004;
+	GIGABOARD   	= 0x0005;
+	BLUE_BRIDGE	= 0x0006;
+}
+			
+enum McuType : uint8 {
+	UNDEFINED = 0xff;
+	STM32F446 = 0x01;
+	STM32H563 = 0x02;
+	STM32H573 = 0x03;
+	STM32G071 = 0x04;
+}
+/*
+ A message to convey hardware and firmware versions in addition to hardware type
+ */
+ @topic("blueberry/")
+message VersionMessage {
+	uint32 firmwareVersion;
+	uin8 hardwareRev;
+	HwType hardwareType;
+	McuType mcuType;
+}
