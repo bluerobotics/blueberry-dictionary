@@ -29,5 +29,5 @@ THE SOFTWARE.
 @namespace(0x42)
 message IdMessage {
 	//the id of this device
-	uint32 id; //this is unique.
+	unsigned long id; //this is unique.
 }
