@@ -45,3 +45,22 @@ module ThisIsATestModule {
 	}
 
 }
+
+
+struct TestStruct {
+	ThisIsATestModule::BlahType test1;
+	uint8 test4;
+}
+
+/*
+ A message to convey hardware and firmware versions in addition to hardware type
+ */
+@topic("blueberry/devices/{device_type}/{nid}/test2")
+@revision(0)
+@namespace(BLUEBERRY_NAMESPACE)
+message Test2Message {
+	ThisIsATestModule::BlahType test1;
+	TestStruct struct1;
+	
+
+}
