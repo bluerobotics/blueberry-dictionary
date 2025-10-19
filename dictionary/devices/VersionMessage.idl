@@ -23,14 +23,14 @@ THE SOFTWARE.
 //an enum to convey PCB type
  enum HwType : uint16 {
  	//this is the default value
-	UNDEFINED   = 0xffff;
-	SFDQ      	= 0x0000;//this is a StarFishDaq
-	BLUE_SERVO	= 0x0001;
-	LUMEN       	= 0x0002;
-	NUCLEO     	= 0x0003; //the ST family of development PCBs
-	BLUE_ESC	= 0x0004;
-	GIGABOARD   	= 0x0005;
-	BLUE_BRIDGE	= 0x0006;
+	UNDEFINED   = 0xffff,
+	SFDQ      	= 0x0000,//this is a StarFishDaq
+	BLUE_SERVO	= 0x0001,
+	LUMEN       	= 0x0002,
+	NUCLEO     	= 0x0003, //the ST family of development PCBs
+	BLUE_ESC	= 0x0004,
+	GIGABOARD   	= 0x0005,
+	BLUE_BRIDGE	= 0x0006
 }
 
 enum McuType : uint8 {

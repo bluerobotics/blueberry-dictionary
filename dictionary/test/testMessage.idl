@@ -29,6 +29,16 @@ module ThisIsATestModule {
 	const uint16 BLUEBERRY_NAMESPACE = 0x42;
 	
 	typedef BlahType uint16;
+	enum TestEnum {
+		UNDEFINED = 65536,
+		FIRST_VALUE,
+		SECOND_VALUE = 12,
+		THIRD_VALUE,
+		FOURTH_VALUE = 33,
+		FIFTH_VALUE,
+		SIXTH_VALUE = 34
+	}
+		
 
 	/*
 	 A message to convey hardware and firmware versions in addition to hardware type
@@ -46,10 +56,10 @@ module ThisIsATestModule {
 
 }
 
-
+import ThisIsATest
 struct TestStruct {
-	ThisIsATestModule::BlahType test1;
-	uint8 test4;
+	ThisIsATestModule::BlahType test4;
+	uint8 test5;
 }
 
 /*
@@ -59,8 +69,8 @@ struct TestStruct {
 @revision(0)
 @namespace(BLUEBERRY_NAMESPACE)
 message Test2Message {
-	ThisIsATestModule::BlahType test1;
-	TestStruct struct1;
+	ThisIsATestModule::BlahType test6;
+	TestStruct test7;
 	
 
 }
