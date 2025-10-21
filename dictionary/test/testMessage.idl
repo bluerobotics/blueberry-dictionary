@@ -59,8 +59,12 @@ module ThisIsATestModule {
 import ThisIsATest
 struct TestStruct {
 	ThisIsATestModule::BlahType test4;
+	boolean test9;
 	uint8 test5;
+	boolean test10;
 }
+
+sequence <TestStruct> TestSequence;
 
 /*
  A message to convey hardware and firmware versions in addition to hardware type
@@ -71,6 +75,9 @@ struct TestStruct {
 message Test2Message {
 	ThisIsATestModule::BlahType test6;
 	TestStruct test7;
+	boolean test8;
+	TestSequence test 11;
+	
 	
 
 }
