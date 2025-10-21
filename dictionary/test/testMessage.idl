@@ -62,6 +62,7 @@ struct TestStruct {
 	boolean test9;
 	uint8 test5;
 	boolean test10;
+	string <20> test12;
 }
 
 sequence <TestStruct> TestSequence;
@@ -76,7 +77,7 @@ message Test2Message {
 	ThisIsATestModule::BlahType test6;
 	TestStruct test7;
 	boolean test8;
-	TestSequence test 11;
+	TestSequence test11;
 	
 	
 
