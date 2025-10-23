@@ -19,36 +19,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-
+//Put common constants, and other definitions here
+//and specify the module key
+@module_key(0x4242)
 module Blueberry {
-	//an enum to convey PCB type
-	 enum HwType : uint16 {
-	 	//this is the default value
-		UNDEFINED   = 0xffff,
-		SFDQ      	= 0x0000,//this is a StarFishDaq
-		BLUE_SERVO	= 0x0001,
-		LUMEN       	= 0x0002,
-		NUCLEO     	= 0x0003, //the ST family of development PCBs
-		BLUE_ESC	= 0x0004,
-		GIGABOARD   	= 0x0005,
-		BLUE_BRIDGE	= 0x0006
-	}
 	
-	enum McuType : uint8 {
-		UNDEFINED = 0xff;
-		STM32F446 = 0x01;
-		STM32H563 = 0x02;
-		STM32H573 = 0x03;
-		STM32G071 = 0x04;
-	}
-	/*
-	 A message to convey hardware and firmware versions in addition to hardware type
-	 */
-	@topic("blueberry/devices/{device_type}/{nid}/version")
-	message VersionMessage {
-		uint32 firmwareVersion;
-		uint8 hardwareRev;
-		HwType hardwareType;
-		McuType mcuType;
-	}
+	
 }
