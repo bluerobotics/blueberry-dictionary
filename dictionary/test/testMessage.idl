@@ -66,19 +66,20 @@ struct TestStruct {
 }
 
 sequence <TestStruct> TestSequence;
-
-/*
- A message to convey hardware and firmware versions in addition to hardware type
- */
-@topic("blueberry/devices/{device_type}/{nid}/test2")
-@revision(0)
-@namespace(BLUEBERRY_NAMESPACE)
-message Test2Message {
-	ThisIsATestModule::BlahType test6;
-	TestStruct test7;
-	boolean test8;
-	TestSequence test11;
-	
-	
+module ThisIsATestModule {
+	module AndANextLevel {
+		/*
+		 A message to convey hardware and firmware versions in addition to hardware type
+		 */
+		@topic("blueberry/devices/{device_type}/{nid}/test2")
+		@revision(0)
+		@namespace(BLUEBERRY_NAMESPACE)
+		message Test2Message {
+			ThisIsATestModule::BlahType test6;
+			TestStruct test7;
+			boolean test8;
+			TestSequence test11;
+		}
+	}
 
 }
