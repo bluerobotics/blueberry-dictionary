@@ -23,7 +23,7 @@ THE SOFTWARE.
 /*
  *The purpose of this module is to test module functionality
  */
-module ThisIsATestModule {
+module ThisIsATestModule::AndAnother {
 	//this defines the numerical namespace that official blueberry messages will live within
 	
 	const uint16 BLUEBERRY_NAMESPACE = 0x42;
@@ -58,7 +58,7 @@ module ThisIsATestModule {
 
 import ThisIsATest
 struct TestStruct {
-	ThisIsATestModule::BlahType test4;
+	ThisIsATestModule::AndAnother::BlahType test4;
 	boolean test9;
 	uint8 test5;
 	boolean test10;
@@ -75,7 +75,7 @@ module ThisIsATestModule {
 		@revision(0)
 		@namespace(BLUEBERRY_NAMESPACE)
 		message Test2Message {
-			ThisIsATestModule::BlahType test6;
+			ThisIsATestModule::AndAnother::BlahType test6;
 			TestStruct test7;
 			boolean test8;
 			TestSequence test11;
