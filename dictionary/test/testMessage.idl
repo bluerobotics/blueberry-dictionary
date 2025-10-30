@@ -28,7 +28,8 @@ module ThisIsATestModule::AndAnother {
 	
 	const uint16 BLUEBERRY_NAMESPACE = 0x42;
 	
-	typedef BlahType uint16;
+	typedef uint16 BlahType[10];
+	
 	enum TestEnum {
 		UNDEFINED = 65536,
 		FIRST_VALUE,
