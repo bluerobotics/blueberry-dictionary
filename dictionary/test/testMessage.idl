@@ -60,11 +60,11 @@ module ThisIsATestModule::AndAnother {
 
 }
 
-import ThisIsATest;
+import ThisIsATestModule;
 //A demo struct to debug stuff
 struct TestStruct {
 	ThisIsATestModule::AndAnother::BlahType test4; //a nested defined type
-	boolean test9;
+	AndAnother::Matrix3x3 test9;
 	uint8 test5;
 	boolean test10;
 	string <20> test12;
