@@ -71,6 +71,7 @@ struct TestStruct {
 }
 
 sequence <TestStruct> TestSequence;
+typedef TestStruct TestStructArray[2];
 module ThisIsATestModule {
 	module AndAnother	{
 		/*
@@ -85,6 +86,7 @@ module ThisIsATestModule {
 			TestStruct test7; //for testing.
 			boolean test8;
 			TestSequence test11;
+			TestStructArray test44;
 		}
 	}
 
