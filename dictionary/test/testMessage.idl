@@ -40,7 +40,7 @@ module ThisIsATestModule::AndAnother {
 		FOURTH_VALUE = 33,
 		FIFTH_VALUE,
 		SIXTH_VALUE = 34
-	}
+	};
 		
 
 	/*
@@ -68,7 +68,7 @@ struct TestStruct {
 	uint8 test5;
 	boolean test10;
 	string <20> test12;
-}
+};
 
 sequence <TestStruct> TestSequence;
 typedef TestStruct TestStructArray[2];
