@@ -57,9 +57,9 @@ module ThisIsATestModule::AndAnother {
 		AnotherType test13;
 
 
-	}
+	};
 
-}
+};
 
 import ThisIsATestModule;
 //A demo struct to debug stuff
@@ -90,7 +90,6 @@ module ThisIsATestModule {
 			TestSequence test11;
 			TestStructArray test44;
 			TestSequenceArray test55;
-		}
-	}
-
-}
+		};
+	};
+};

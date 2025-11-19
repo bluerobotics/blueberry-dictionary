@@ -32,4 +32,4 @@ module Blueberry {
 		//the id of this device
 		unsigned long id; //this is unique.
 	}
-}
+};
