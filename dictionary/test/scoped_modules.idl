@@ -1,0 +1,9 @@
+// Test scoped module syntax
+module A::B::C {
+    typedef long MyLong;
+
+    enum Status {
+        ACTIVE,
+        INACTIVE
+    };
+};
