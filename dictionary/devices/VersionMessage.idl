@@ -33,7 +33,7 @@ module Blueberry {
 		GIGABOARD   	= 0x0005,
 		BLUE_BRIDGE	= 0x0006
 	}
-	
+
 	enum McuType : uint8 {
 		UNDEFINED = 0xff;
 		STM32F446 = 0x01;
