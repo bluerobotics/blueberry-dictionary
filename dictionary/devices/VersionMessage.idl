@@ -32,15 +32,16 @@ module Blueberry {
 		BLUE_ESC	= 0x0004,
 		GIGABOARD   	= 0x0005,
 		BLUE_BRIDGE	= 0x0006
-	}
-
+	};
+	
 	enum McuType : uint8 {
-		UNDEFINED = 0xff,
-		STM32F446 = 0x01,
-		STM32H563 = 0x02,
-		STM32H573 = 0x03,
-		STM32G071 = 0x04
-	}
+		UNDEFINED = 0xff;
+		STM32F446 = 0x01;
+		STM32H563 = 0x02;
+		STM32H573 = 0x03;
+		STM32G071 = 0x04;
+	};
+	
 	/*
 	 A message to convey hardware and firmware versions in addition to hardware type
 	 */
