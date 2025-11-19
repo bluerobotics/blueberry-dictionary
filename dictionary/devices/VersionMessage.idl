@@ -41,6 +41,7 @@ module Blueberry {
 		STM32H573 = 0x03;
 		STM32G071 = 0x04;
 	};
+	
 	/*
 	 A message to convey hardware and firmware versions in addition to hardware type
 	 */

@@ -22,7 +22,7 @@ THE SOFTWARE.
 
 
 module Blueberry {
-	
+
 	/*
 	 A message to convey the unique ID of this devices
 	 */
