@@ -27,19 +27,19 @@ module Blueberry {
 		UNDEFINED   = 0xffff,
 		SFDQ      	= 0x0000,//this is a StarFishDaq
 		BLUE_SERVO	= 0x0001,
-		LUMEN       	= 0x0002,
+		LUMEN       = 0x0002,
 		NUCLEO     	= 0x0003, //the ST family of development PCBs
 		BLUE_ESC	= 0x0004,
-		GIGABOARD   	= 0x0005,
+		GIGABOARD   = 0x0005,
 		BLUE_BRIDGE	= 0x0006
 	};
 	
 	enum McuType : uint8 {
-		UNDEFINED = 0xff;
-		STM32F446 = 0x01;
-		STM32H563 = 0x02;
-		STM32H573 = 0x03;
-		STM32G071 = 0x04;
+		UNDEFINED = 0xff,
+		STM32F446 = 0x01,
+		STM32H563 = 0x02,
+		STM32H573 = 0x03,
+		STM32G071 = 0x04
 	};
 	
 	/*
