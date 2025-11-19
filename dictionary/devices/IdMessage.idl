@@ -31,5 +31,5 @@ module Blueberry {
 	message IdMessage {
 		//the id of this device
 		unsigned long id; //this is unique.
-	}
+	};
 };
