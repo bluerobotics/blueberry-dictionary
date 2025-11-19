@@ -25,13 +25,13 @@ THE SOFTWARE.
  */
 module ThisIsATestModule::AndAnother {
 	//this defines the numerical namespace that official blueberry messages will live within
-	
+
 	const uint16 BLUEBERRY_NAMESPACE = 0x42;
-	
+
 	typedef uint16 BlahType[10];
 	typedef float Matrix3x3[3][3];
 	typedef uint32 AnotherType;
-	
+
 	enum TestEnum {
 		UNDEFINED = 65536,
 		FIRST_VALUE,
@@ -41,7 +41,7 @@ module ThisIsATestModule::AndAnother {
 		FIFTH_VALUE,
 		SIXTH_VALUE = 34
 	}
-		
+
 
 	/*
 	 A message to convey hardware and firmware versions in addition to hardware type
@@ -54,8 +54,8 @@ module ThisIsATestModule::AndAnother {
 		uint8 test2;
 		string test3;
 		AnotherType test13;
-		
-	
+
+
 	}
 
 }

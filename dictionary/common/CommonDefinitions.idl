@@ -23,6 +23,6 @@ THE SOFTWARE.
 //and specify the module key
 @module_key(0x4242)
 module Blueberry {
-	
-	
+
+
 }
