@@ -1,0 +1,7 @@
+// Struct fixture covering primitive members and array syntax.
+struct Person {
+    string name;
+    long age;
+    boolean isActive;
+    long readings[8];
+};
