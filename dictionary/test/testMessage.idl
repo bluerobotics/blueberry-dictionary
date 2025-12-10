@@ -26,7 +26,6 @@ THE SOFTWARE.
 module ThisIsATestModule::AndAnother {
 	//this defines the numerical namespace that official blueberry messages will live within
 
-	const uint16 BLUEBERRY_NAMESPACE = 0x42;
 
 	typedef uint16 BlahType[10];
 	typedef float Matrix3x3[3][3];
@@ -49,7 +48,6 @@ module ThisIsATestModule::AndAnother {
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/test")
 	@revision(1)
-	@namespace(BLUEBERRY_NAMESPACE)
 	message TestMessage {
 		BlahType test1;
 		uint8 test2;
@@ -81,7 +79,6 @@ module ThisIsATestModule {
 		 */
 		@topic("blueberry/devices/{device_type}/{nid}/test2")
 		@revision(0)
-		@namespace(BLUEBERRY_NAMESPACE)
 		message Test2Message {
 			::ThisIsATestModule::AndAnother::BlahType test6;
 			BlahType test14;//a test field
