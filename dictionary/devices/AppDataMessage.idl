@@ -19,11 +19,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-//Put common constants, and other definitions here
-//and specify the module key
-@module_key(0x4242)
-module Blueberry {
-	//a handy sequence of 32-bit floats. This is like an array but variable length
-	sequence <float> FloatSequence;
 
-}
+
+module Blueberry {
+
+	
+	
+	
+	
+	/*
+	 A message to convey a sequence of app data - an array of floats for various purposes
+	 */
+	@topic("blueberry/devices/{device_type}/{nid}/app-data")
+	@message_key()
+	message AppDataMessage {
+		FloatSequence data;
+	};
+};
