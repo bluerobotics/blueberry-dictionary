@@ -29,7 +29,7 @@ module Blueberry {
 	 * the peripherals will respond with an idPayload
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/whos-there")
-	@message_key()
+	@message_key(0x0003)
 	message WhosThereMessage {
 		float probability; //the probability that the peripheral will respond. 1.0 is 100% probability, 0.0 is zero.
 		float time; //the time in seconds within which the device should respond.

@@ -31,7 +31,7 @@ module Blueberry {
 	 A message to convey a sequence of app data - an array of floats for various purposes
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/app-data")
-	@message_key()
+	@message_key(0x0001)
 	message AppDataMessage {
 		FloatSequence data;
 	};
