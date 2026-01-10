@@ -33,6 +33,6 @@ module Blueberry {
 	@topic("blueberry/devices/{device_type}/{nid}/app-data")
 	@message_key(0x0001)
 	message AppDataMessage {
-		FloatSequence data;
+		FloatSequence floats;
 	};
 };
