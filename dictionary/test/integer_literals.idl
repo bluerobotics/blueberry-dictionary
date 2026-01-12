@@ -1,0 +1,7 @@
+// Fixture exercising decimal, octal, and hexadecimal literals.
+const long DECIMAL_TWELVE = 12;
+const long OCTAL_TWELVE = 014;
+const long HEX_TWELVE = 0XC;
+const long LOWER_HEX = 0x1a;
+const long NEGATIVE_OCTAL = -017;
+const long NEGATIVE_HEX = -0X2A;

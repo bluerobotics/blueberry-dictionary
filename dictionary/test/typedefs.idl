@@ -1,0 +1,7 @@
+// Typedef fixture covering primitives, sequences, and scoped names.
+typedef long MyLong;
+typedef sequence<long> LongList;
+typedef sequence<string, 64> BoundedStrings;
+typedef Example::Person PersonAlias;
+typedef uint8 Array32[32];
+typedef uint8 Matrix3x3[3][3];
