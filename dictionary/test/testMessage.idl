@@ -49,10 +49,7 @@ module ThisIsATestModule::AndAnother {
 	@topic("blueberry/devices/{device_type}/{nid}/test")
 	@revision(1)
 	message TestMessage {
-		BlahType test1;
-		uint8 test2;
-		string test3;
-		AnotherType test13;
+		string <20> filename;
 
 
 	};
