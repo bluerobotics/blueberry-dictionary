@@ -1,0 +1,8 @@
+// Fixture covering implicit enum value propagation.
+enum AutoStatus {
+    FIRST,
+    SECOND,
+    THIRD = 10,
+    FOURTH,
+    FIFTH,
+};

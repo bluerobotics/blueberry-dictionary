@@ -1,0 +1,17 @@
+// Tests annotation parsing and comment capture.
+@Blueprint::Marker
+@Blueprint::Experimental(role = 1)
+struct Annotated {
+    // Primary identifier
+    @Wire::Encoded(format = Status::ACTIVE)
+    long id;
+
+    // Display label
+    @Wire::Label("primary")
+    string label;
+
+    // Toggle flag
+    @Wire::Flag
+    @Wire::FlagOptions(mode = "test", retries = 10)
+    boolean enabled;
+};

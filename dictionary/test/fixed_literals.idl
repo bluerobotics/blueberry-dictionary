@@ -1,0 +1,7 @@
+// Covers the variations allowed for fixed-point literals per section 7.2.6.5.
+
+const long FRACTIONAL = 12.34d;
+const long FRACTION_ONLY = .625d;
+const long INTEGER_ONLY = 42d;
+const long TRAILING_DOT = 7.D;
+const long NEGATIVE_FRACTION = -0.875d;

@@ -1,0 +1,40 @@
+// Fixture covering numeric constant folding scenarios.
+const long GLOBAL_BASE = 12;
+const long GLOBAL_ALIAS = GLOBAL_BASE;
+const double PI_VALUE = 3.141592653589793;
+const double TAU_ALIAS = PI_VALUE;
+const long FIXED_BASE = 12.5d;
+const long FIXED_ALIAS = FIXED_BASE;
+const string PRODUCT = "Blueberry";
+const string PRODUCT_ALIAS = PRODUCT;
+const long FORWARD_ALIAS = FORWARD_BASE;
+const long FORWARD_BASE = 64;
+
+@Meta(limit = GLOBAL_ALIAS)
+const long ANNOTATED_LIMIT = GLOBAL_ALIAS;
+
+module Outer {
+    const long MODULE_BASE = 21 + 1 / 3;
+    const long MODULE_COMPLEX = (2 + 3) * 4 - 6 / 3;
+    const double MODULE_RATIO = 1.5 + 5 / 4.0;
+    const long MODULE_MAGIC = MODULE_BASE + MODULE_COMPLEX;
+    const long MODULE_ALIAS = MODULE_BASE;
+
+    module Inner {
+        const long INNER_BASE = 7;
+        const long FROM_PARENT = MODULE_BASE;
+        const long FROM_OUTER_SCOPED = Outer::MODULE_BASE;
+        const long FROM_ABSOLUTE = ::Outer::MODULE_BASE;
+    };
+};
+
+enum WithConst {
+    START = GLOBAL_ALIAS,
+    NEXT,
+};
+
+@Range(max = GLOBAL_ALIAS)
+struct AnnotatedStruct {
+    @Field(defaultValue = GLOBAL_ALIAS)
+    long threshold;
+};
