@@ -1,0 +1,17 @@
+struct BaseStruct {
+    long id;
+};
+
+struct DerivedStruct : BaseStruct {
+    boolean active;
+};
+
+@topic(value = "base/topic")
+message BaseMessage {
+    long id;
+};
+
+@topic(value = "derived/topic")
+message DerivedMessage : BaseMessage {
+    boolean active;
+};
