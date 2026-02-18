@@ -1,0 +1,4 @@
+// Module-only fixture that mirrors the Example module layout.
+module Navigation {
+    typedef long Heading;
+};
