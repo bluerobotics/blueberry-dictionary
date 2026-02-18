@@ -30,6 +30,9 @@ module ThisIsATestModule::AndAnother {
 	typedef uint16 BlahType[10];
 	typedef float Matrix3x3[3][3];
 	typedef uint32 AnotherType;
+	const uint16 THIS_IS_A_CONSTANT = 0x42;
+	const string THIS_IS_A_STRING_CONSTANT = "blahblahblah";
+
 
 	enum TestEnum {
 		UNDEFINED = 65536,
