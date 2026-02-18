@@ -25,5 +25,4 @@ THE SOFTWARE.
 module Blueberry {
 	//a handy sequence of 32-bit floats. This is like an array but variable length
 	sequence <float> FloatSequence;
-
-}
+};
