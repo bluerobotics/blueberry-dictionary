@@ -10,7 +10,7 @@ const string PRODUCT_ALIAS = PRODUCT;
 const long FORWARD_ALIAS = FORWARD_BASE;
 const long FORWARD_BASE = 64;
 
-@Meta(limit = GLOBAL_ALIAS)
+//@Meta(limit = GLOBAL_ALIAS)
 //const long ANNOTATED_LIMIT = GLOBAL_ALIAS;////parser can't handle constants set to constants yet
 
 module Outer {
