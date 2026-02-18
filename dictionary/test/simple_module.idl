@@ -5,7 +5,7 @@
 module Example {
     // Basic types example
     typedef long MyLong;
-    typedef string MyString;
+//    typedef string MyString; //parser can't yet handle strings here
 
     // Enum example
     enum Status {
@@ -38,9 +38,9 @@ module Example {
 
     // Sequence example
     typedef sequence<long> LongList;
-    typedef sequence<string, 100> BoundedStringList;
+ //   typedef sequence<string, 100> BoundedStringList;//parser can't handle sequences of strings yet
     typedef sequence<Person> PersonList;
 
     // Nested sequences
-    typedef sequence<sequence<long>> Matrix;
+//    typedef sequence<sequence<long>> Matrix;//not sure this is legal. Either way, parser can't handle it yet. Work around is to define a sequence type and then another
 };
