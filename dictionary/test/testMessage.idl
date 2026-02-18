@@ -69,7 +69,7 @@ struct TestStruct {
 	string <20> test12;
 };
 
-sequence <TestStruct> TestSequence;
+typedef sequence <TestStruct> TestSequence;
 typedef TestStruct TestStructArray[2];
 typedef TestSequence TestSequenceArray[3];
 module ThisIsATestModule {
