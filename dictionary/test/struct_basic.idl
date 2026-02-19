@@ -1,7 +1,10 @@
+//defined this array outside of the struct to acheive the desired construction
+typedef long ReadingsArray[8];
 // Struct fixture covering primitive members and array syntax.
 struct Person {
     string name;
     long age;
     boolean isActive;
-    long readings[8];
+//    long readings[8];//anonymous arrays are not allowed
+    ReadingsArray readings;
 };

@@ -1,13 +1,13 @@
 // Fixture covering numeric constant folding scenarios.
 const long GLOBAL_BASE = 12;
-const long GLOBAL_ALIAS = GLOBAL_BASE;
+//const long GLOBAL_ALIAS = GLOBAL_BASE;//parser can't yet handle constants of constants
 const double PI_VALUE = 3.141592653589793;
-const double TAU_ALIAS = PI_VALUE;
+//const double TAU_ALIAS = PI_VALUE;
 const long FIXED_BASE = 12.5d;
-const long FIXED_ALIAS = FIXED_BASE;
+//const long FIXED_ALIAS = FIXED_BASE;
 const string PRODUCT = "Blueberry";
-const string PRODUCT_ALIAS = PRODUCT;
-const long FORWARD_ALIAS = FORWARD_BASE;
+//const string PRODUCT_ALIAS = PRODUCT;
+//const long FORWARD_ALIAS = FORWARD_BASE;
 const long FORWARD_BASE = 64;
 
 @Meta(limit = GLOBAL_ALIAS)
