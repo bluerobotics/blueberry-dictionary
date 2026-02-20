@@ -18,7 +18,7 @@ module Outer {
 //    const long MODULE_COMPLEX = (2 + 3) * 4 - 6 / 3;
 //    const double MODULE_RATIO = 1.5 + 5 / 4.0;
 //    const long MODULE_MAGIC = MODULE_BASE + MODULE_COMPLEX;
-    const long MODULE_ALIAS = MODULE_BASE;
+//    const long MODULE_ALIAS = MODULE_BASE;
 
     module Inner {
         const long INNER_BASE = 7;
