@@ -9,4 +9,4 @@ const double PI = 3.141592653589793;
 const boolean FEATURE_FLAG = TRUE;
 const char NEWLINE = '\n';
 const string PRODUCT = "Blueberry";
-const Status DEFAULT_STATUS = Status::ACTIVE;
+//const Status DEFAULT_STATUS = Status::ACTIVE;//TODO: this currently is not supported by the parser. Will add later probably.

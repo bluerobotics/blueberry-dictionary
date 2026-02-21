@@ -1,4 +1,3 @@
 // Import fixture covering scoped and string imports.
 import Example::Utilities;
 import ::Root::Systems::Diagnostics;
-import "external/sensors.idl";
