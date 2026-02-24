@@ -25,7 +25,7 @@ module Blueberry {
 
 		struct AdcConfigStruct {
 		uint8 channel;
-		bool enabled;
+		boolean enabled;
 		float timeConstantSeconds;
 		float gain;
 		float offset;
