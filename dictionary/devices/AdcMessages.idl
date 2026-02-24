@@ -23,13 +23,40 @@ THE SOFTWARE.
 
 module Blueberry {
 
+		struct AdcConfigStruct {
+		uint8 channel;
+		bool enabled;
+		float timeConstantSeconds;
+		float gain;
+		float offset;
+	};
+	typedef sequence <AdcConfigStruct> AdcConfigSequence;
 	
 	/*
-	 A message to convey a sequence of app data - an array of floats for various purposes
+	 A message to convey config parameters for ADCs
 	 */
-	@topic("blueberry/devices/{device_type}/{nid}/app-data")
-	@message_key(0x0001)
-	message AppDataMessage {
-		FloatSequence floats;
+	@topic("blueberry/devices/{device_type}/{nid}/adc-config")
+	@message_key()
+	message AdcConfigMessage {
+		AdcConfigSequence config;
 	};
+	
+	struct AdcDataStruct {
+		uint8 channel;
+		float data;
+	};
+	
+	typedef sequence <AdcDataStruct> AdcDataSequence;
+	
+	/*
+	 A message to convey data from all configured ADCs
+	 */
+	@topic("blueberry/devices/{device_type}/{nid}/adc-data")
+	@message_key()
+	message AdcDataMessage {
+		AdcDataSequence data;
+	};
+	
+	
+
 };
