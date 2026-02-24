@@ -22,7 +22,7 @@ module Outer {
 
     module Inner {
         const long INNER_BASE = 7;
-//        const long FROM_PARENT = MODULE_BASE;
+        const long FROM_PARENT = MODULE_BASE;
  //       const long FROM_OUTER_SCOPED = Outer::MODULE_BASE;
  //       const long FROM_ABSOLUTE = ::Outer::MODULE_BASE;
     };

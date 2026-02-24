@@ -38,7 +38,7 @@ module Example {
 
     // Sequence example
     typedef sequence<long> LongList;
- //   typedef sequence<string, 100> BoundedStringList;//parser can't handle sequences of strings yet
+    typedef sequence<string, 100> BoundedStringList;//parser can't handle sequences of strings yet
     typedef sequence<Person> PersonList;
 
     // Nested sequences
