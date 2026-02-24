@@ -42,7 +42,6 @@ module Blueberry {
 	};
 	
 	struct AdcDataStruct {
-		uint8 channel;
 		float data;
 	};
 	
