@@ -23,39 +23,13 @@ THE SOFTWARE.
 
 module Blueberry {
 
-		struct AdcConfigStruct {
-		uint8 channel;
-		boolean enabled;
-		float timeConstantSeconds;
-		float gain;
-		float offset;
-	};
-	typedef sequence <AdcConfigStruct> AdcConfigSequence;
-	
 	/*
-	 A message to convey config parameters for ADCs
+	 A message to convey the unique ID of this devices
 	 */
-	@topic("blueberry/devices/{device_type}/{nid}/adc-config")
-	@message_key(0x0004)
-	message AdcConfigMessage {
-		AdcConfigSequence config;
+	@topic("blueberry/devices/{device_type}/{nid}/time")
+	@message_key(0x0006)
+	message TimeMessage {
+		uint32 hostTime; //time in milliseconds from program start according to the bus controller
+		uint32 localTime; //time in milliseconds from program start according to sender of this packet
 	};
-	
-	struct AdcDataStruct {
-		float data;
-	};
-	
-	typedef sequence <AdcDataStruct> AdcDataSequence;
-	
-	/*
-	 A message to convey data from all configured ADCs
-	 */
-	@topic("blueberry/devices/{device_type}/{nid}/adc-data")
-	@message_key(0x0005)
-	message AdcDataMessage {
-		AdcDataSequence data;
-	};
-	
-	
-
 };
