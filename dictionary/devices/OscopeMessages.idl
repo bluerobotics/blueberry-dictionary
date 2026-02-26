@@ -33,7 +33,8 @@ module Blueberry {
 	
 	//A message to convey setup parameters for the oscope module
 	@message_key(0x0009)
-	message OscopeSetupMessage {
+	@topic("blueberry/devices/{device_type}/{nid}/oscope-config")
+	message OscopeConfigMessage {
 		float period; //the sample period in seconds of the oscope
 		uint8 triggerSource; //a sinksource that the trigger is derived from
 		float threshold; //the threshold measurement for the trigger
@@ -47,6 +48,7 @@ module Blueberry {
 	//a message to convey a single channel of oscope data
 	//this can also be used to configure a channel - data would be zero length in that case
 	@message_key(0x000a)
+	@topic("blueberry/devices/{device_type}/{nid}/oscope-data")
 	message OscopeDataMessage {
 		uint8 channel;
 		uint32 captureId;
