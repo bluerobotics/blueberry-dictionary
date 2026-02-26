@@ -1,0 +1,58 @@
+/*
+Copyright (c) 2025  Blue Robotics North Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+
+module Blueberry {
+
+	enum TriggerPosEnum : uint8 {
+		FIRST_QUARTER_TRIG_POS = 0,
+		SECOND_QUARTER_TRIG_POS = 1,
+		THIRD_QUARTER_TRIG_POS = 2,
+		FOURTH_QUARTER_TRIG_POS = 3
+	};
+	
+	
+	//A message to convey setup parameters for the oscope module
+	@message_key(0x0009)
+	message OscopeSetupMessage {
+		float period; //the sample period in seconds of the oscope
+		uint8 triggerSource; //a sinksource that the trigger is derived from
+		float threshold; //the threshold measurement for the trigger
+		float holdoff; //the delay before triggering again
+		TriggerPosEnum trigPos; //indicates how much of series will be ahead of the trigger.
+		boolean risingNotFalling; //triggers on rising edge of trigger if true, else falling
+	};
+	
+	typedef sequence <uint8> OscopeDataSequence;
+	
+	//a message to convey a single channel of oscope data
+	//this can also be used to configure a channel - data would be zero length in that case
+	@message_key(0x000a)
+	message OscopeDataMessage {
+		uint8 channel;
+		uint32 captureId;
+		float gain;
+		float offset;
+		uint8 source; //sink-source that data is captured from
+		OscopeDataSequence data;
+	};
+};
