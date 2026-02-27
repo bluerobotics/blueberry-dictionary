@@ -21,8 +21,8 @@ THE SOFTWARE.
 */
 
 
-module Blueberry {
-
+module ::Blueberry::Devices {
+	import ::Blueberry::Common;
 	
 	/*
 	 A message to convey a sequence of app data - an array of floats for various purposes

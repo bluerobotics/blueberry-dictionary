@@ -21,7 +21,7 @@ THE SOFTWARE.
 */
 
 
-module Blueberry {
+module ::Blueberry::Devices {
 
 		struct AdcConfigStruct {
 		uint8 channel;

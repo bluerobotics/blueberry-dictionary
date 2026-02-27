@@ -21,7 +21,7 @@ THE SOFTWARE.
 */
 
 
-module Blueberry {
+module ::Blueberry::Devices {
 
 	enum TriggerPosEnum : uint8 {
 		FIRST_QUARTER_TRIG_POS = 0,

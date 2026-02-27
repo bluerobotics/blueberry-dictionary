@@ -22,7 +22,7 @@ THE SOFTWARE.
 //Put common constants, and other definitions here
 //and specify the module key
 @module_key(0x4242)
-module Blueberry {
+module ::Blueberry::Devices {
 	//a handy sequence of 32-bit floats. This is like an array but variable length
 	typedef sequence <float> FloatSequence;
 };

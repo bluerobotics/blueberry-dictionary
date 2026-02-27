@@ -21,7 +21,7 @@ THE SOFTWARE.
 */
 
 
-module Blueberry {
+module ::Blueberry::Devices {
 
 	/**
 	 * a request by the bus controller to all devices that have not communicated successfully recently

@@ -21,7 +21,7 @@ THE SOFTWARE.
 */
 
 
-module Blueberry {
+module ::Blueberry::Devices {
 
 
 	enum GpioDirEnum : uint8 {
