@@ -1,0 +1,79 @@
+/*
+Copyright (c) 2025  Blue Robotics North Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+
+module Blueberry {
+
+
+	enum GpioDirEnum : uint8 {
+		INPUT =       0,
+		OUTPUT =      1,
+		ANALOG =      2,
+		OUTPUT_LOW =  3,
+		OUTPUT_HIGH = 4,
+		AF0 =         5,
+		AF1 =         6,
+		AF2 =         7,
+		AF3 =         8,
+		AF4 =         9,
+		AF5 =        10,
+		AF6 =        11,
+		AF7 =        12,
+		AF8 =        13,
+		AF9 =        14,
+		AF10 =       15,
+		AF11 =       16,
+		AF12 =       17,
+		AF13 =       18,
+		AF14 =       19,
+		AF15 =       20
+	};
+	struct GpioPinConfig {
+		uint8 pin; //this is formed from the Port in the top nibble and the pin in the least significant nibble
+		GpioDirEnum dir; //the direction to set this pin
+	};
+	typedef sequence <GpioPinConfig> GpioPinConfigSequence;
+	
+	/*
+	 A message to convey config parameters for ADCs
+	 */
+	@topic("blueberry/devices/{device_type}/{nid}/gpio-pin-config")
+	@message_key(0x000b)
+	message GpioConfigMessage {
+		GpioPinConfigSequence pinConfigs;
+	};
+
+	typedef sequence <uint16> PortPins;
+
+	/*
+	 A message to convey the digital values of each GPIO pin
+	 Each element in the sequence is the pin values of a port: Port A, Port B ... Port N
+	 */
+	@topic("blueberry/devices/{device_type}/{nid}/gpio-pins")
+	@message_key(0x000c)
+	message GpioPinsMessage {
+		PortPins port;
+	};
+	
+	
+
+};
