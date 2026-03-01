@@ -1,0 +1,72 @@
+/*
+Copyright (c) 2025  Blue Robotics North Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+
+module ::Blueberry::Devices {
+
+
+	enum FlashProgramState : uint8 {
+		DO_NOTHING_REQUEST     =  0,  //controller doesn't want the peripheral to do anything in particular at this moment
+
+	
+		UPLOAD_REQUEST         =  1,  //controller is sending upload data to the peripheral
+		RUN_REQUEST            =  2,  //controller wants peripheral to run the image in flash. Only should work if peripheral has a good image
+		OVERWRITE_REQUEST      =  3,  //controller wants peripheral to overwrite its main code with the new flash image. Image must be good for this to be accepted
+		CLEAR_REQUEST          =  4, //controller wants peripheral to clear its upper flash memory in preparation for an upload. This will only be complied with if the peripheral is either in image good or image bad state
+		STOP_REQUEST           =  5,  //controller wants peripheral to stop running upper flash
+	
+		IMAGE_GOOD_RESPONSE    =  6,  //peripheral has a good image in flash
+		IMAGE_BAD_RESPONSE     =  7,  //peripheral has data in flash that does not check out as a correct image
+		IMAGE_CLEAR_RESPONSE   =  8,  //peripheral indicates that its upper flash memory is clear and ready for upload
+		UPLOADING_RESPONSE     =  9,  //peripheral is receiving data.
+		UPLOAD_BAD_RESPONSE    = 10,  //peripheral detected an error in the data - controller should stand by and wait for it to resolve. Peripheral will clear the bad sector and respond with an uploading response when ready
+		WILL_RUN_RESPONSE      = 11,  //peripheral responds with this for 5 packet cycles, then reboots
+		RUNNING_RESPONSE       = 12,  //peripheral is running upper flash image
+		OVERWRITING_RESPONSE   = 13,  //peripheral response with this for 5 packet cyles, then reboots.
+		CLEARING_RESPONSE      = 14,  //peripheral says that it's busy clearing
+		
+		
+	};
+
+	/*
+	 * an array of 32 bit words of data. A series of these payloads sent over time will make up the total new firmware
+	 * the data corresponds to the words to write to flash
+	 */
+	typedef sequence <uint32>  FlashProgramSequence;
+	
+	
+	/*
+	 * a message to convey flash programming data
+	 */
+	@message_key(0xd12c)
+	@topic("blueberry/devices/{device_type}/{nid}/flash_program")
+	message FlashProgramMessage {
+		FlashProgramState state;
+		uint32 version;
+		uint32 crc; //a crc of the words sent so far. This is an ethernet CRC-32
+		uint32 start; //the number of words transferred so far, and the start index of the next array of data. Peripherals will indicate the total words that have passed CRC here.
+		uint32 end; //the number of words that will have been transferred after the following array. This is also the index of the first element of the array after this one. Peripherals will indicate the total number of words received here.
+		uint32 length; //the total number of words that will be transferred. When length equals total length then the transfer is complete
+		FlashProgramSequence data;
+	};
+
+};

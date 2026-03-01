@@ -1,0 +1,122 @@
+/*
+Copyright (c) 2025  Blue Robotics North Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+
+module ::Blueberry::Devices {
+
+
+
+	/*
+	 * Feedback module setpoints are defined as trajectory waypoints
+	 * They are defined by a value and a rate of value change at a specific time in the future
+	 * Many setpoints can be queued to for a piecewise continuous path for the controller to follow
+	 * The feedback module will compute a cubic equation to traverse from one waypoint to another 
+	 */
+	struct FeedbackTrajectoryStruct {
+		uint8 channel; //the feedback channel that this payload is to update the trajectories of
+		float setpoint; //the target value that the feedback controller should achieve
+		float setpointRate; //the target rate of setpoint change that should be achieved when the setpoint is achieved
+		uint32 time; //the time by which the setpoint and setpoint rate should be acheived. This is in milliseconds of "host time"
+	};
+	typedef sequence <FeedbackTrajectoryStruct> TrajectorySequence;
+	/*
+	 * A peripheral responds with this when receiving a trajectory array
+	 */
+	
+	/*
+	 * A payload for a peripheral to indicate the state of its feedback control modules 
+	 */
+	struct FeedbackResponseStruct {
+		uint8 channel;
+		float actual;
+		float setpoint;
+		float output;
+		uint8 queueLength; //the number of items in the queue
+		uint32 endTime; //the time when the last trajectory in the queue will end
+	}
+	typedef sequence <FeedbackResponseStruct> ResponseSequence;
+	/* 
+	 * A selection of units for the setpoint.
+	 * Mostly just to select between angular units and units that do not loop
+	 * For now this is not inteded to stray beyond SI
+	 */
+	enum Unit : uint8 {
+		METRES = 0,
+		RADIANS = 1,
+		METRES_PER_SECOND = 3,
+		RADIANS_PER_SECOND = 4,
+		DEGREES = 5,
+	}
+	/*
+	 * Defines where the feedback controller should get its input from
+	 */
+	enum PlumbingType : uint8 {
+		UNCONFIGURED = 0,
+		OPEN_LOOP = 1,
+		TX_APP_DATA = 2,
+		RX_APP_DATA = 3,
+		STREAM = 4,
+	}
+	/*
+	 * This configures a feedback channel
+	 * the peripheral will respond with the same paylaod
+	 * if the payload is sent empty then it only triggers the peripheral to respond with its configuration
+	 * One payload is sent per feedback channel used
+	 * These do not need to be sent regularly
+	 */
+	struct FeedbackConfigStruct {
+		uint8 channel; //the channel to configure
+		Unit unit;
+		boolean enable; //enable this channel
+		float minInput;
+		float maxInput;
+		float minOutput;
+		float maxOutput;
+		
+	
+		PlumbingType inputType;
+		PlumbingType outputType;
+		uint8 inputChannel; //selects the channel to get the input from of the type specified in the inputType field, only if channel number makes sense
+		uint8 outputChannel;
+		float c0;
+		float c1;
+		float c2;
+		float d1;
+		float d2;
+	}
+	
+	typedef sequence <FeedbackConfigStruct> ConfigSequence;
+
+	
+	
+	/*
+	 * a general purpose message that can convey any number of various sequences to convey trajectories, update responses, or configuration
+	 */
+	@message_key(0x4d78)
+	@topic("blueberry/devices/{device_type}/{nid}/feedback")
+	message FeedbackMessage {
+		ConfigSequence config;
+		TrajectorySequence trajectories;
+		ResponseSequence response;
+	};
+
+};
