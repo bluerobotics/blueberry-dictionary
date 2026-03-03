@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 module ::Blueberry::Devices {
 
-		struct AdcConfigStruct {
+	struct AdcConfigStruct {
 		uint8 channel;
 		boolean enabled;
 		float timeConstantSeconds;
@@ -36,7 +36,7 @@ module ::Blueberry::Devices {
 	 A message to convey config parameters for ADCs
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/adc-config")
-	@message_key(0x0004)
+	@message_key(0xf7f2)
 	message AdcConfigMessage {
 		AdcConfigSequence config;
 	};
@@ -51,7 +51,7 @@ module ::Blueberry::Devices {
 	 A message to convey data from all configured ADCs
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/adc-data")
-	@message_key(0x0005)
+	@message_key(0xfc9d)
 	message AdcDataMessage {
 		AdcDataSequence data;
 	};

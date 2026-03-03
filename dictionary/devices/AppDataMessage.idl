@@ -28,7 +28,7 @@ module ::Blueberry::Devices {
 	 A message to convey a sequence of app data - an array of floats for various purposes
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/app-data")
-	@message_key(0x0001)
+	@message_key(0xdd4b)
 	message AppDataMessage {
 		FloatSequence floats;
 	};

@@ -39,7 +39,7 @@ module ::Blueberry::Devices {
 	 A message to convey config parameters for Thermistors
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/thermistor-config")
-	@message_key(0x0007)
+	@message_key(0xaae3)
 	message ThermistorConfigMessage {
 		ThermistorConfigSequence config;
 	};
@@ -55,7 +55,7 @@ module ::Blueberry::Devices {
 	 A message to convey data from all configured ADCs
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/thermistor-data")
-	@message_key(0x0008)
+	@message_key(d51a)
 	message ThermistorDataMessage {
 		ThermistorDataSequence data;
 	};

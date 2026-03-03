@@ -46,7 +46,7 @@ module ::Blueberry::Devices {
 	 A message to convey hardware and firmware versions in addition to hardware type
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/version")
-	@message_key(0x0002)
+	@message_key(0x8366)
 	message VersionMessage {
 		uint32 firmwareVersion;
 		uint8 hardwareRev;

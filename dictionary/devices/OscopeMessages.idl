@@ -32,7 +32,7 @@ module ::Blueberry::Devices {
 	
 	
 	//A message to convey setup parameters for the oscope module
-	@message_key(0x0009)
+	@message_key(0x7e1d)
 	@topic("blueberry/devices/{device_type}/{nid}/oscope-config")
 	message OscopeConfigMessage {
 		float period; //the sample period in seconds of the oscope
@@ -47,7 +47,7 @@ module ::Blueberry::Devices {
 	
 	//a message to convey a single channel of oscope data
 	//this can also be used to configure a channel - data would be zero length in that case
-	@message_key(0x000a)
+	@message_key(0x831d)
 	@topic("blueberry/devices/{device_type}/{nid}/oscope-data")
 	message OscopeDataMessage {
 		uint8 channel;

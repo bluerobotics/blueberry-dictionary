@@ -27,7 +27,7 @@ module ::Blueberry::Devices {
 	 A message to convey the unique ID of this devices
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/id")
-	@message_key(0x0)
+	@message_key(0x8ca5)
 	message IdMessage {
 		//the id of this device
 		unsigned long id; //this is unique.
