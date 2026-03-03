@@ -55,7 +55,7 @@ module ::Blueberry::Devices {
 	 A message to convey data from all configured ADCs
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/thermistor-data")
-	@message_key(d51a)
+	@message_key(0xd51a)
 	message ThermistorDataMessage {
 		ThermistorDataSequence data;
 	};
