@@ -65,7 +65,7 @@ module ::Blueberry::Devices {
 		uint32 crc; //a crc of the words sent so far. This is an ethernet CRC-32
 		uint32 start; //the number of words transferred so far, and the start index of the next array of data. Peripherals will indicate the total words that have passed CRC here.
 		uint32 end; //the number of words that will have been transferred after the following array. This is also the index of the first element of the array after this one. Peripherals will indicate the total number of words received here.
-		uint32 length; //the total number of words that will be transferred. When length equals total length then the transfer is complete
+		uint32 byteCount; //the total number of words that will be transferred. When length equals total length then the transfer is complete
 		FlashProgramSequence data;
 	};
 
