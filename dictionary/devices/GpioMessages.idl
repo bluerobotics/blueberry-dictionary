@@ -24,7 +24,7 @@ THE SOFTWARE.
 module ::Blueberry::Devices {
 
 
-	enum GpioDirEnum : uint8 {
+	enum GpioDir : uint8 {
 		INPUT =       0,
 		OUTPUT =      1,
 		ANALOG =      2,
@@ -49,15 +49,15 @@ module ::Blueberry::Devices {
 	};
 	struct GpioPinConfig {
 		uint8 pin; //this is formed from the Port in the top nibble and the pin in the least significant nibble
-		GpioDirEnum dir; //the direction to set this pin
+		GpioDir dir; //the direction to set this pin
 	};
 	typedef sequence <GpioPinConfig> GpioPinConfigSequence;
 	
 	/*
-	 A message to convey config parameters for a GPIO pin
+	 A message to convey config parameters for ADCs
 	 */
-	@topic("blueberry/devices/{device_type}/{nid}/gpio-config")
-	@message_key(0xd14e)
+	@topic("blueberry/devices/{device_type}/{nid}/gpio-pin-config")
+	@message_key(0x000b)
 	message GpioConfigMessage {
 		GpioPinConfigSequence pinConfigs;
 	};
@@ -69,7 +69,7 @@ module ::Blueberry::Devices {
 	 Each element in the sequence is the pin values of a port: Port A, Port B ... Port N
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/gpio-pins")
-	@message_key(0x71ef)
+	@message_key(0x000c)
 	message GpioPinsMessage {
 		PortPins port;
 	};
