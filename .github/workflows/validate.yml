@@ -1,0 +1,47 @@
+name: Validate Dictionary
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download blueberry-cli
+        run: |
+          curl -fsSL -o blueberry-cli \
+            https://github.com/bluerobotics/blueberry-compiler/releases/download/v0.0.1/blueberry-cli-linux-x86_64
+          chmod +x blueberry-cli
+
+      - name: Validate dictionary
+        id: validate
+        continue-on-error: true
+        env:
+          NO_COLOR: "1"
+        run: |
+          set -o pipefail
+          ./blueberry-cli . 2>&1 | tee validation-output.txt
+
+      - name: Comment validation errors on PR
+        if: steps.validate.outcome == 'failure' && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo '## Dictionary Validation Errors'
+            echo ''
+            echo '```'
+            sed 's/\x1b\[[0-9;]*m//g' validation-output.txt
+            echo '```'
+          } > comment-body.md
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file comment-body.md
+
+      - name: Check for failures
+        if: steps.validate.outcome == 'failure'
+        run: exit 1
