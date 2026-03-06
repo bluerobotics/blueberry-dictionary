@@ -57,7 +57,7 @@ module ::Blueberry::Devices {
 	 A message to convey config parameters for ADCs
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/gpio-pin-config")
-	@message_key(0x000b)
+	@message_key(0xd14e)
 	message GpioConfigMessage {
 		GpioPinConfigSequence pinConfigs;
 	};
@@ -69,7 +69,7 @@ module ::Blueberry::Devices {
 	 Each element in the sequence is the pin values of a port: Port A, Port B ... Port N
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/gpio-pins")
-	@message_key(0x000c)
+	@message_key(0x71ef)
 	message GpioPinsMessage {
 		PortPins port;
 	};

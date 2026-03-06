@@ -27,7 +27,7 @@ module ::Blueberry::Devices {
 	 A message to convey the unique ID of this devices
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/time")
-	@message_key(0x0006)
+	@message_key(0x3c5b)
 	message TimeMessage {
 		uint32 hostTime; //time in milliseconds from program start according to the bus controller
 		uint32 localTime; //time in milliseconds from program start according to sender of this packet
