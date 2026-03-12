@@ -62,7 +62,7 @@ module ::Blueberry::Devices {
     typedef sequence <uint32> SpiTransactionData;
 
     // A message to define an SPI transaction to be sent out
-    @message_key()
+    @message_key(0x25ed)
     @topic("blueberry/devices/{device_type}/{nid}/spi-transaction")
     message SpiTransactionMessage {
         SpiDevBb spiDev; // The SPI device for the SPI transaction
@@ -71,9 +71,9 @@ module ::Blueberry::Devices {
         BaudDivBb baudDiv; // The baud rate division for the SPI transaction
         ClockSpecBb clockSpec; // The clock polarity and phase of the SPI transaction
 		
-		uint16 numBytes; // The number of bytes contained in this SPI transaction
-		boolean deAssertCs; // If we want to de-assert CS at the end of this SPI transaction
-		int32 transactionId; // Unique ID for the transaction
+	uint16 numBytes; // The number of bytes contained in this SPI transaction
+	boolean deAssertCs; // If we want to de-assert CS at the end of this SPI transaction
+	int32 transactionId; // Unique ID for the transaction
 
         SpiTransactionData transactionData; // Data for the transaction
     };
