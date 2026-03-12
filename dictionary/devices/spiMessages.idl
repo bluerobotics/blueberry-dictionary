@@ -66,14 +66,13 @@ module ::Blueberry::Devices {
     @topic("blueberry/devices/{device_type}/{nid}/spi-transaction")
     message SpiTransactionMessage {
         SpiDevBb spiDev; // The SPI device for the SPI transaction
-        PortNameBb csPinPort; // The CS pin port for the SPI transaction
-        uint8 csPinNum; // The CS pin number within the port for the SPI transaction
+        PortPinEnum csPin; // The CS pin and port for the SPI transaction
         BaudDivBb baudDiv; // The baud rate division for the SPI transaction
         ClockSpecBb clockSpec; // The clock polarity and phase of the SPI transaction
 		
-	uint16 numBytes; // The number of bytes contained in this SPI transaction
-	boolean deAssertCs; // If we want to de-assert CS at the end of this SPI transaction
-	int32 transactionId; // Unique ID for the transaction
+        uint16 numBytes; // The number of bytes contained in this SPI transaction
+        boolean deAssertCs; // If we want to de-assert CS at the end of this SPI transaction
+        int32 transactionId; // Unique ID for the transaction
 
         SpiTransactionData transactionData; // Data for the transaction
     };
