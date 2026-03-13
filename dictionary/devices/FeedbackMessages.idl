@@ -52,7 +52,7 @@ module ::Blueberry::Devices {
 		float output;
 		uint8 queueLength; //the number of items in the queue
 		uint32 endTime; //the time when the last trajectory in the queue will end
-	}
+	};
 	typedef sequence <FeedbackResponseStruct> ResponseSequence;
 	/* 
 	 * A selection of units for the setpoint.
@@ -65,7 +65,7 @@ module ::Blueberry::Devices {
 		METRES_PER_SECOND = 3,
 		RADIANS_PER_SECOND = 4,
 		DEGREES = 5,
-	}
+	};
 	/*
 	 * Defines where the feedback controller should get its input from
 	 */
@@ -75,7 +75,7 @@ module ::Blueberry::Devices {
 		TX_APP_DATA = 2,
 		RX_APP_DATA = 3,
 		STREAM = 4,
-	}
+	};
 	/*
 	 * This configures a feedback channel
 	 * the peripheral will respond with the same paylaod
@@ -102,7 +102,7 @@ module ::Blueberry::Devices {
 		float c2;
 		float d1;
 		float d2;
-	}
+	};
 	
 	typedef sequence <FeedbackConfigStruct> ConfigSequence;
 
