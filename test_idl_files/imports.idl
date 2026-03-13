@@ -1,3 +1,10 @@
 // Import fixture covering scoped and string imports.
+
+module ::Example::Utilities {
+};
+
+module ::Root::Systems::Diagnostics {
+};
+
 import Example::Utilities;
 import ::Root::Systems::Diagnostics;
