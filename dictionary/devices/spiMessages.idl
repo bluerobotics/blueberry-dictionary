@@ -47,17 +47,6 @@ module ::Blueberry::Devices {
         SPI_DIV_128 = 6,
         SPI_DIV_256	= 7
     };
-    enum PortNameBb : uint8 {
-        A = 0,
-        B = 1,
-        C = 2,
-        D = 3,
-        E = 4,
-        F = 5,
-        G = 6,
-        H = 7,
-        I = 8
-    };
 
     typedef sequence <uint32> SpiTransactionData;
 
