@@ -43,7 +43,7 @@ module ::Blueberry::Devices {
 		boolean risingNotFalling; //triggers on rising edge of trigger if true, else falling
 	};
 	
-	typedef sequence <uint8> OscopeDataSequence;
+	typedef sequence <int8> OscopeDataSequence;
 	
 	//a message to convey a single channel of oscope data
 	//this can also be used to configure a channel - data would be zero length in that case
