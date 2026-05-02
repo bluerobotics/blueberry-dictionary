@@ -24,7 +24,7 @@ THE SOFTWARE.
 module ::Blueberry::Devices {
 
     enum I2cDevBb : uint8 {
-        I2CNULL_DEV = -1,
+        I2CNULL_DEV = 0xFF,
         I2C1_DEV = 0,
         I2C2_DEV = 1,
         I2C3_DEV = 2,
@@ -33,11 +33,11 @@ module ::Blueberry::Devices {
 
     typedef sequence <uint32> I2cTransactionData;
 
-    // A message to define an SPI transaction to be sent out
+    // A message to define an I2C transaction to be sent out
     @message_key(0x26ed)
-    @topic("blueberry/devices/{device_type}/{nid}/spi-transaction")
-    message SpiTransactionMessage {
-        I2cDevBb i2cDev; // The SPI device for the SPI transaction
+    @topic("blueberry/devices/{device_type}/{nid}/i2c-transaction")
+    message I2cTransactionMessage {
+        I2cDevBb i2cDev; // The I2C device for the I2C transaction
 		uint8 i2cAddr;
 
         uint16 numTxBytes;
