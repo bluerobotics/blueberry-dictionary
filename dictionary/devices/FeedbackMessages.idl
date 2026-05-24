@@ -65,6 +65,10 @@ module ::Blueberry::Devices {
 		METRES_PER_SECOND = 3,
 		RADIANS_PER_SECOND = 4,
 		DEGREES = 5,
+		METRES_PER_SECOND_SQUARED = 6,
+		RADIANS_PER_SECOND_SQUARED = 7,
+		NEWTONS = 8,
+		NEWTON_METRES = 9
 	};
 	/*
 	 * Defines where the feedback controller should get its input from
