@@ -22,14 +22,25 @@ THE SOFTWARE.
 
 
 module ::Blueberry::Devices {
-
+	typedef uint64 Time64; //a measure of time in 100ns increments since an epoch of January 1st 2000
 	/*
-	 A message to convey the unique ID of this devices
+	   A message for time synchronization.
+	   This message will likely be deprecated soon. 
 	 */
 	@topic("blueberry/devices/{device_type}/{nid}/time")
 	@message_key(0x3c5b)
 	message TimeMessage {
 		uint32 hostTime; //time in milliseconds from program start according to the bus controller
 		uint32 localTime; //time in milliseconds from program start according to sender of this packet
+	};
+	
+	/*
+	   An improved message for time synchronization that uses the new Time64 deined type
+	 */
+	@topic("blueberry/devices/{device_type}/{nid}/timesync")
+	@message_key(0x767d)
+	message TimeSyncMessage {
+		Time64 senderTime; //most recent sampled time of the sender of this message
+		Time64 lastReceivedTime; //time from last received time sync message, i.e. not the time of this device.
 	};
 };
