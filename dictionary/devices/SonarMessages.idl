@@ -1,0 +1,58 @@
+/*
+Copyright (c) 2026  Blue Robotics North Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+
+module ::Blueberry::Devices {
+	/*
+	  An enum for conveying the type of data in an A-scan
+	 */
+	enum AScanType : uint8 {
+		UNDEFINED = 0,
+		RAW_RF = 1,
+		IQ_DEMOD = 2,
+		RECTIFIER_DEMOD = 3,
+	}
+	
+	
+	/*
+	 A message to convey a single A-scan of sonar data
+	 This doesn't contain any info about the data, like what transmit pulse was used or whatever
+	 Let's assume for now that info will be transferred some other way
+	 This message assumes that the  total a-scan will be sent over multiple messages
+	 This message can be used as a request if captureId and firstSample index are specified and zero
+	 In this case, sampleRate and data can be NAN, empty respectively, but they don't really matter
+	 It is assumed that a device will not respond right away if it doesn't have data yet, instead it will simply drop the message and wait for a subsequent one
+	 */
+	@message_key(0xc136)
+	@topic("blueberry/devices/{device_type}/{nid}/sonar-a-scan")
+	message SonarAScanMessage {
+		uint32 captureId;//a unique identifier of the entire a-scan data set. This is set by the device.
+		uint32 firstSampleIndex;//the index of the first element of the sequence, which is a subset of the entire a-scan data set. In a request, this means the next data to send.
+		uint32 totalSampleNum;//the number of datapoints in this data set. This is defined by the device
+		float sampleRate;//the sample rate reported from the data source
+		FloatSequence data;
+		AScanType type;
+	};
+	
+	
+	
+};
