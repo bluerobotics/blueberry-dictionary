@@ -34,7 +34,7 @@ module ::Blueberry::Devices {
     typedef sequence <uint32> I2cTransactionData;
 
     // A message to define an I2C transaction to be sent out
-    @message_key(0x22ed)
+    @message_key(0x35b1)
     @topic("blueberry/devices/{device_type}/{nid}/i2c-transaction")
     message I2cTransactionMessage {
         I2cDevBb i2cDev; // The I2C device for the I2C transaction
