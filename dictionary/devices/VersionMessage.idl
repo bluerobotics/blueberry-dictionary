@@ -31,7 +31,8 @@ module ::Blueberry::Devices {
 		NUCLEO     	= 0x0003, //the ST family of development PCBs
 		BLUE_ESC	= 0x0004,
 		GIGABOARD   = 0x0005,
-		BLUE_BRIDGE	= 0x0006
+		BLUE_BRIDGE	= 0x0006,
+		POGOBRAIN	= 0x0007
 	};
 	
 	enum McuType : uint8 {
