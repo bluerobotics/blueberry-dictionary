@@ -40,13 +40,14 @@ module ::Blueberry::Devices {
 	 This message assumes that the  total a-scan will be sent over multiple messages
 	 This message can be used as a request if captureId and firstSample index are specified and zero
 	 In this case, sampleRate and data can be NAN, empty respectively, but they don't really matter
-	 It is assumed that a device will not respond right away if it doesn't have data yet, instead it will simply drop the message and wait for a subsequent one
+	 It is assumed that a device will not respond right away if it doesn't have data yet, 
+	 instead it will simply drop the message and wait for a subsequent one.
 	 */
 	@message_key(0xc136)
 	@topic("blueberry/devices/{device_type}/{nid}/sonar-a-scan")
 	message SonarAScanMessage {
 		uint32 captureId;//a unique identifier of the entire a-scan data set. This is set by the device.
-		uint32 firstSampleIndex;//the index of the first element of the sequence, which is a subset of the entire a-scan data set. In a request, this means the next data to send.
+		uint32 firstSampleIndex;//the index of the first element of the sequence.
 		uint32 totalSampleNum;//the number of datapoints in this data set. This is defined by the device
 		float sampleRate;//the sample rate reported from the data source
 		FloatSequence data;
