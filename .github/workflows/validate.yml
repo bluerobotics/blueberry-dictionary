@@ -5,7 +5,7 @@ on:
   pull_request:
 
 permissions:
-  pull-requests: write
+  contents: read
 
 jobs:
   validate:
@@ -28,19 +28,12 @@ jobs:
           set -o pipefail
           ./blueberry-cli . 2>&1 | tee validation-output.txt
 
-      - name: Comment validation errors on PR
-        if: steps.validate.outcome == 'failure' && github.event_name == 'pull_request'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          {
-            echo '## Dictionary Validation Errors'
-            echo ''
-            echo '```'
-            sed 's/\x1b\[[0-9;]*m//g' validation-output.txt
-            echo '```'
-          } > comment-body.md
-          gh pr comment "${{ github.event.pull_request.number }}" --body-file comment-body.md
+      - name: Upload validation output
+        if: github.event_name == 'pull_request' && steps.validate.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-output
+          path: validation-output.txt
 
       - name: Check for failures
         if: steps.validate.outcome == 'failure'
