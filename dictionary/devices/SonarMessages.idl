@@ -30,7 +30,7 @@ module ::Blueberry::Devices {
 		RAW_RF = 1,
 		IQ_DEMOD = 2,
 		RECTIFIER_DEMOD = 3,
-	}
+	};
 	
 	
 	/*
