@@ -30,9 +30,8 @@ module ::Blueberry::Devices {
 		RAW_RF = 1,
 		IQ_DEMOD = 2,
 		RECTIFIER_DEMOD = 3,
-	};
-	
-	
+	}
+
 	/*
 	 A message to convey a single A-scan of sonar data
 	 This doesn't contain any info about the data, like what transmit pulse was used or whatever
@@ -40,7 +39,7 @@ module ::Blueberry::Devices {
 	 This message assumes that the  total a-scan will be sent over multiple messages
 	 This message can be used as a request if captureId and firstSample index are specified and zero
 	 In this case, sampleRate and data can be NAN, empty respectively, but they don't really matter
-	 It is assumed that a device will not respond right away if it doesn't have data yet, 
+	 It is assumed that a device will not respond right away if it doesn't have data yet,
 	 instead it will simply drop the message and wait for a subsequent one.
 	 */
 	@message_key(0xc136)
@@ -53,7 +52,7 @@ module ::Blueberry::Devices {
 		FloatSequence data;
 		AScanType type;
 	};
-	
-	
-	
+
+
+
 };
