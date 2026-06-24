@@ -28,12 +28,19 @@ jobs:
           set -o pipefail
           ./blueberry-cli . 2>&1 | tee validation-output.txt
 
+      - name: Save PR number
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "${{ github.event.pull_request.number }}" > pr-number.txt
+
       - name: Upload validation output
         if: github.event_name == 'pull_request' && steps.validate.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: validation-output
-          path: validation-output.txt
+          path: |
+            validation-output.txt
+            pr-number.txt
 
       - name: Check for failures
         if: steps.validate.outcome == 'failure'
