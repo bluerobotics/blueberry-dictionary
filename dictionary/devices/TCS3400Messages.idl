@@ -20,30 +20,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+/*
+  NOTE: TCS3400 is for product development only, blueberry implementation is minimal and designed for ROV power switch testing only
+ */
 
 module ::Blueberry::Devices {
 	
-	// NOTE: TCS3400 is for product development only, blueberry implementation is minimal and designed for ROV power switch testing only
+	
+
 
 	/*
 	  An enum for defining the available 8-bit parameters of the tcs3400
 	 */
 	enum parameter8 : uint8 {
-		REVID = 0;
-		ID = 1;	
+		REVID = 0,
+		ID = 1,
 	};
 
 	/*
 	  An enum for defining the available 16-bit parameters of the tcs3400
 	 */
 	enum parameter16 : uint8 {
-		CLEAR = 0;
-		RED = 1;
-		GREEN = 2;
-		BLUE = 3;
+		CLEAR = 0,
+		RED = 1,
+		GREEN = 2,
+		BLUE = 3,
 	};
-	
-	
+
 	/*
 	 A message to pass 8-bit data from the tcs3400 colour sensor into blueberry studio
 	 */
@@ -62,6 +65,8 @@ module ::Blueberry::Devices {
 	message Tcs3400Data16Message {
 		parameter16 param;
 		uint16 data;
-	}
+	};
+	
+	
 	
 };
