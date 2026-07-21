@@ -1,0 +1,67 @@
+/*
+Copyright (c) 2026  Blue Robotics North Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+
+module ::Blueberry::Devices {
+	
+	// NOTE: TCS3400 is for product development only, blueberry implementation is minimal and designed for ROV power switch testing only
+
+	/*
+	  An enum for defining the available 8-bit parameters of the tcs3400
+	 */
+	enum parameter8 : uint8 {
+		REVID = 0;
+		ID = 1;	
+	};
+
+	/*
+	  An enum for defining the available 16-bit parameters of the tcs3400
+	 */
+	enum parameter16 : uint8 {
+		CLEAR = 0;
+		RED = 1;
+		GREEN = 2;
+		BLUE = 3;
+	};
+	
+	
+	/*
+	 A message to pass 8-bit data from the tcs3400 colour sensor into blueberry studio
+	 */
+	@message_key(0xc342)
+	@topic("blueberry/devices/{device_type}/{nid}/tcs3400-data8")
+	message Tcs3400Data8Message {
+		parameter8 param;
+		uint8 data;
+	};
+
+	/*
+	 A message to pass 16-bit data from the tcs3400 colour sensor into blueberry studio
+	 */
+	@message_key(0x6efe)
+	@topic("blueberry/devices/{device_type}/{nid}/tcs3400-data16")
+	message Tcs3400Data16Message {
+		parameter16 param;
+		uint16 data;
+	}
+	
+};
