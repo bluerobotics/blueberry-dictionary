@@ -27,9 +27,11 @@ module ::Blueberry::Devices {
 	 */
 	enum AScanType : uint8 {
 		UNDEFINED = 0,
-		RAW_RF = 1,
-		IQ_DEMOD = 2,
-		RECTIFIER_DEMOD = 3,
+		RAW_RF = 1,//the data is raw voltage measurements
+		IQ_DEMOD = 2, // IQ demodulated
+		RECTIFIER_DEMOD = 3, //simple rectifier demodulation
+		MIN_MAX = 4, //rectifier demod plus indicates if datapoint was saturated high, low or both
+		RAW_CURRENT = 5 //raw current measurement, for transducer characterization
 	};
 	
 	
