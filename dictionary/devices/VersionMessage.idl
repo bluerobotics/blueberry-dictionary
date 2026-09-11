@@ -53,5 +53,7 @@ module ::Blueberry::Devices {
 		uint8 hardwareRev;
 		HwType hardwareType;
 		McuType mcuType;
+		uint32 gitHash;//the most significant 32 bits of the git hash of the current firmware repo
+		boolean gitDirty;//true indicates that files have been changed since the last commit, false means everything is clean
 	};
 };
