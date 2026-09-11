@@ -32,7 +32,8 @@ module ::Blueberry::Devices {
 		BLUE_ESC	= 0x0004,
 		GIGABOARD   = 0x0005,
 		BLUE_BRIDGE	= 0x0006,
-		POGOBRAIN	= 0x0007
+		POGOBRAIN	= 0x0007,
+		PING_DEV_KIT = 0x0008
 	};
 	
 	enum McuType : uint8 {
